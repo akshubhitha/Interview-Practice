@@ -1,19 +1,15 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        int tortoise = nums[0];
-        int hare = nums [0];
+        HashMap<Integer, Integer>map = new HashMap<Integer,Integer>();
         
-       do{
-            tortoise = nums[tortoise];
-            hare = nums[nums[hare]];
-        } while(tortoise!= hare);
-        
-        tortoise = nums[0];
-        while(tortoise!= hare){
-            tortoise = nums[tortoise];
-            hare = nums[hare];
+        for(int i=0; i<nums.length; i++){
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i], 1);
+            }
+            else{
+                return nums[i];
+            }
         }
-        
-        return hare;
+        return -1;
     }
 }
